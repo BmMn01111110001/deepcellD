@@ -30,10 +30,11 @@ from __future__ import print_function
 from __future__ import division
 
 import numpy as np
-from tensorflow.keras import callbacks
-from tensorflow.distribute import MirroredStrategy
-from tensorflow.python.keras import Model
-from tensorflow.python.client import device_lib
+from tf.keras import callbacks
+from tf.distribute import MirroredStrategy  
+from tf.keras.utils import multi_gpu_model
+from tf.keras import Model
+from tf.client import device_lib
 
 
 def get_callbacks(model_path,
@@ -120,7 +121,7 @@ class MultiGpuModel(Model):
         gpus (int): number of GPUs to train on.
     """
     def __init__(self, ser_model, gpus):
-        pmodel = multi_gpu_model(ser_model, gpus)
+        pmodel = MirroredStrategy(ser_model, gpus)
         self.__dict__.update(pmodel.__dict__)
         self._smodel = ser_model
 
