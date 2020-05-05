@@ -31,7 +31,7 @@ from __future__ import division
 
 import numpy as np
 from tensorflow.keras import callbacks
-from tensorflow.distribute import MirroredStrategy  
+#from tensorflow.distribute import MirroredStrategy  
 from tensorflow.keras.utils import multi_gpu_model
 from tensorflow.keras import Model
 from tensorflow.client import device_lib
@@ -112,7 +112,7 @@ def count_gpus():
     gpus = [d for d in devices if d.name.lower().startswith('/device:gpu')]
     return len(gpus)
 
-
+"""
 class MultiGpuModel(Model):
     """Wrapper Model class to enable multi-gpu saving/loading
 
@@ -135,3 +135,4 @@ class MultiGpuModel(Model):
             return getattr(self._smodel, attrname)
 
         return super(MultiGpuModel, self).__getattribute__(attrname)
+"""
