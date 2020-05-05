@@ -30,11 +30,11 @@ from __future__ import print_function
 from __future__ import division
 
 import numpy as np
-from tf.keras import callbacks
-from tf.distribute import MirroredStrategy  
-from tf.keras.utils import multi_gpu_model
-from tf.keras import Model
-from tf.client import device_lib
+from tensorflow.keras import callbacks
+from tensorflow.distribute import MirroredStrategy  
+from tensorflow.keras.utils import multi_gpu_model
+from tensorflow.keras import Model
+from tensorflow.client import device_lib
 
 
 def get_callbacks(model_path,
