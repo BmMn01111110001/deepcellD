@@ -112,27 +112,4 @@ def count_gpus():
     gpus = [d for d in devices if d.name.lower().startswith('/device:gpu')]
     return len(gpus)
 
-"""
-class MultiGpuModel(Model):
-    """Wrapper Model class to enable multi-gpu saving/loading
 
-    Args:
-        ser_model (tensorflow.keras.Model): serial-model for multiple GPUs.
-        gpus (int): number of GPUs to train on.
-    """
-    def __init__(self, ser_model, gpus):
-        pmodel = MirroredStrategy(ser_model, gpus)
-        self.__dict__.update(pmodel.__dict__)
-        self._smodel = ser_model
-
-    def __getattribute__(self, attrname):
-        """Override load and save methods to be used from the serial-model.
-
-        The serial-model holds references to the weights in the multi-gpu model
-        """
-        # return Model.__getattribute__(self, attrname)
-        if 'load' in attrname or 'save' in attrname:
-            return getattr(self._smodel, attrname)
-
-        return super(MultiGpuModel, self).__getattribute__(attrname)
-"""
